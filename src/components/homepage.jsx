@@ -12,6 +12,7 @@ console.log(products);
 function HomePage(){
 const [cart, setCart] = useState([]);
 
+let cartQuantity = 0;
 
 const addToCart = (product) => {
 setCart((prevCart) => {
@@ -29,9 +30,17 @@ return [...prevCart, {...product, quantity: 1}];
 
 }
 
-// const removeFromCart = (product) => {
+const totalCartQuantity = () => {
+  cart.forEach(cartItem => cartQuantity+= cartItem.quantity);
+}
 
-// }
+totalCartQuantity();
+
+
+
+
+
+
 
 
     return (
@@ -86,7 +95,7 @@ return [...prevCart, {...product, quantity: 1}];
              
              </div>
             <div className='basis-3/12 border border-black h-[300px]'> 
-            <h1 className='ml-3 pt-2 text-2xl text-orange-600 font-bold '>Your Cart ( )</h1>
+            <h1 className='ml-3 pt-2 text-2xl text-orange-600 font-bold '>Your Cart ({cartQuantity})</h1>
             
             </div>
         </div>
