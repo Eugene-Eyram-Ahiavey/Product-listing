@@ -5,6 +5,7 @@ import cartImage from '../utils/images/icon-add-to-cart.svg';
 import decrementImage from '../utils/images/icon-decrement-quantity.svg';
 import incrementImage from '../utils/images/icon-increment-quantity.svg'
 import removeIcon from '../utils/images/icon-remove-item.svg'
+import carbonIcon from '../utils/images/icon-carbon-neutral.svg'
 
 console.log(products);
 
@@ -63,19 +64,23 @@ if(existingProduct.quantity > 1){
 }
 
 
-const calculateCartQuantity = () => {
 
-let cartQuantity = 0;
+const totalCartQuantity = cart.reduce((acc, cartItem) => {
+return acc + cartItem.quantity;
+}, 0);
 
-function calculate(){
-  cart.forEach(cartItem => cartQuantity += cartItem.quantity);
-  return cartQuantity;
+console.log(totalCartQuantity);
+
+const cartTotal = () => {
+  let totalCartPrice = 0; 
+
+  cart.forEach(cartItem => {
+    return totalCartPrice += (cartItem.price * cartItem.quantity);
+  })
+  return totalCartPrice;
 }
 
-return calculate;
-}
-
-const totalQuantity = calculateCartQuantity();
+console.log(cartTotal())
 
     return (
         
@@ -129,12 +134,12 @@ const totalQuantity = calculateCartQuantity();
              
              </div>
             <div className='basis-3/12  rounded-xl h-[300px] bg-white'> 
-            <h1 className='ml-3 pt-2 text-2xl text-orange-600 font-bold '>Your Cart ({totalQuantity()})</h1>
+            <h1 className='ml-3 pt-2 text-2xl text-orange-600 font-bold '>Your Cart ({totalCartQuantity})</h1>
 
               {
                 cart.map((cartItem) => {
                   return (
-                    <div key={cartItem.id} className='p-3'>
+                    <div key={cartItem.id} className='p-3 bg-white'>
                       <div>
                         <p className='w-[90%] m-auto'>{cartItem.name}</p>
                         <div className='flex justify-between w-[90%] m-auto'>
@@ -153,6 +158,18 @@ const totalQuantity = calculateCartQuantity();
                   )
                 })
               }
+              <div className='w-[90%] m-auto'>
+                <div className='flex justify-between'>
+                  <p>Order Total</p>
+                  <p className='font-bold'>${cartTotal().toFixed(2)}</p>
+                </div>
+                <div className='flex bg-newrose-100 mt-4 p-1 rounded-md'>
+                  <img src={carbonIcon} />
+                  <p className='ml-2'>This is a <span className='text-newrose-900 font-bold'>carbon-neutral</span> delivery</p>
+                </div>
+
+                <button className='w-full bg-orange-600 text-newrose-50 border:none mt-4 p-2 rounded-3xl'>Confirm Order</button>
+              </div>
 
             </div>
         </div>
