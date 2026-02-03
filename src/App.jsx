@@ -1,12 +1,11 @@
 import HomePage from "./components/homepage"
-
+import LoginPage from "./components/Login-page"
 
 function App() {
- 
 
   return (
     <>
-     <HomePage/>
+     <LoginPage/>
     </>
   )
 }

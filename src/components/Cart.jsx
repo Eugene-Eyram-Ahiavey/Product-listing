@@ -7,16 +7,7 @@ import removeIcon from '../utils/images/icon-remove-item.svg'
 import carbonIcon from '../utils/images/icon-carbon-neutral.svg'
 
 
-const Cart = ({cart, setCart, isOpen, startNewOrder, controlModal}) => {
-// const [cart, setCart] = useState(JSON.parse(localStorage.getItem('cart-items')) || []);
-
-
-// useEffect(()=> {
-// localStorage.setItem('cart-items', JSON.stringify(cart));
-
-// }, [cart])
-
-
+const Cart = ({cart, setCart, isOpen, startNewOrder, controlModal, setIsOpen}) => {
 
 
 let totalCartQuantity = cart.reduce((acc, cartItem) => {
@@ -106,6 +97,7 @@ setCart((prevCart) => prevCart.filter(cartItem => cartItem.id !== product.id));
                   startNewOrder={startNewOrder}
                   cart={cart}
                   cartPriceTotal={cartPriceTotal}
+                  setIsOpen={setIsOpen}
                   />
                 }
                  

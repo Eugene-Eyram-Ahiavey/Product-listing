@@ -89,9 +89,6 @@ const cartPriceTotal = () => {
 
 console.log(cartPriceTotal())
 
-// const deleteFromCart = (product) => {
-// setCart((prevCart) => prevCart.filter(cartItem => cartItem.id !== product.id));
-// }
 
 const controlModal = () => {
 setIsOpen(true);
@@ -162,6 +159,7 @@ return prevCart;
              isOpen={isOpen}
              startNewOrder={startNewOrder}
              controlModal={controlModal}
+             setIsOpen={setIsOpen}
              />
           
         </div>
