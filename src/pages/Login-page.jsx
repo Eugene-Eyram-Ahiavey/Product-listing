@@ -1,18 +1,30 @@
 
 import { useState } from "react";
-import { Link } from "react-router-dom";
 import dessertsImage from "../utils/images/Collection.png";
 import { TbEyeClosed } from "react-icons/tb";
 import { FiEye } from "react-icons/fi";
+import { Link } from "react-router-dom";
 
 
 const LoginPage = () => {
+
 const [isOpen, setIsOpen] = useState(false)
 const [formData, setFormData] = useState({
     email:'',
     password:'',
+    rememberMe: false,
+
 })
 
+
+const handleChange = (event) => {
+const {name, value,type, checked, } = event.target;
+
+   setFormData((prevData) => ({
+...prevData, 
+[name]:type === 'checkbox' ? checked : value
+   }));
+}
 
 const readPassword = () => {
 setIsOpen(!isOpen);
@@ -31,15 +43,21 @@ setIsOpen(!isOpen);
 
                 <div className='mt-5'>
                     <input type="text" placeholder="Email Address" className='border-none outline-none w-full rounded-xl p-2'
+                        
                         value={formData.email}
                         name='email'
+                       onChange={handleChange}
+                       required
                     />
                 </div>
 
                 <div className='mt-5 flex justify-between rounded-xl bg-white border border-blue-400 items-center'>
                     <input type={isOpen ? 'text' : 'password'}  placeholder='Password' className='outline-none w-full rounded-xl  p-2 '
+                   
                     name="password"
                     value={formData.password}
+                    onChange={handleChange}
+                     required
                     />
                     
                         {
@@ -62,9 +80,14 @@ setIsOpen(!isOpen);
                     
                 </div>
                 
-                <div className='mt-5 flex justify-between items-center'>
-                    <input type="checkbox" /> 
-                    <span className='cursor-pointer'>Remember Me</span>
+                <div className='mt-5 flex  items-center'>
+                    <input type="checkbox"
+                    name='rememberMe'
+                    value={formData.rememberMe}
+                    onChange={handleChange}
+                    className='cursor-pointer'
+                    /> 
+                    <span className='ml-3'>Remember Me</span>
 
                     
                 </div>
@@ -73,9 +96,10 @@ setIsOpen(!isOpen);
 
                 <div className="mt-5 text-center">
                 <span>New Around here?</span>
+                <Link to={"/signup"}>
                 <span className='ml-2 cursor-pointer text-orange-600'>Signup</span>
+                </Link>
                 </div>
-                
             </div>
         </div>
         </>
