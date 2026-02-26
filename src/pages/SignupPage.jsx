@@ -50,7 +50,7 @@ if(!formData.email || !formData.fullName || !formData.password){
 }try{
 setIsLoading(true)
 
-const response = await axios.post("http://localhost:4000/users", {
+const response = await axios.post("https://product-listing-backend-s5l6.onrender.com/users", {
     full_name: formData.fullName, 
     email: formData.email,
     password: formData.password
