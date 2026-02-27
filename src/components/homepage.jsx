@@ -9,7 +9,7 @@ import incrementImage from '../utils/images/icon-increment-quantity.svg'
 // import removeIcon from '../utils/images/icon-remove-item.svg'
 // import carbonIcon from '../utils/images/icon-carbon-neutral.svg'
 // import empty from '../utils/images/illustration-empty-cart.svg'
-console.log(products);
+// console.log(products);
 
 
 
@@ -47,7 +47,7 @@ setCart((prevCart) => {
 
 
   const existingProduct = prevCart.find(cartItem => cartItem.id === product.id);
-console.log(prevCart);
+// console.log(prevCart);
 
 if(!existingProduct){
   return prevCart;
@@ -76,7 +76,7 @@ return acc + cartItem.quantity;
 
 
 
-console.log(totalCartQuantity);
+// console.log(totalCartQuantity);
 
 const cartPriceTotal = () => {
   let totalCartPrice = 0; 
@@ -87,7 +87,7 @@ const cartPriceTotal = () => {
   return totalCartPrice;
 }
 
-console.log(cartPriceTotal())
+// console.log(cartPriceTotal())
 
 
 const controlModal = () => {

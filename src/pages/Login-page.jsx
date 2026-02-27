@@ -56,7 +56,7 @@ const response = await axios.post("https://product-listing-backend-s5l6.onrender
 
 if(response.status === 200){
     setIsLoading(false);
-    console.log(response.data);
+    // console.log(response.data);
 
     navigate("/home");
 
@@ -76,7 +76,7 @@ if(error.response){
     setErrorMessage("Network error");
 }
 
-console.log(err);
+// console.log(err);
 }
 
 }
@@ -154,7 +154,7 @@ console.log(err);
                         error && <p className='text-red-600 text-center mt-2'>All fields are required</p> 
 
                         }
-                        
+
                         {
                         errorMessage && <p className='text-red-600 text-center mt-2'>{errorMessage}</p> 
                         }

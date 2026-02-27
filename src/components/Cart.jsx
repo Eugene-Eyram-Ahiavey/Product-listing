@@ -15,7 +15,7 @@ return acc + cartItem.quantity;
 }, 0);
 
 
-console.log(totalCartQuantity);
+// console.log(totalCartQuantity);
 const cartPriceTotal = () => {
   let totalCartPrice = 0; 
 

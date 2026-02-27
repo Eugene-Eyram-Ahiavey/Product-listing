@@ -57,7 +57,7 @@ const response = await axios.post("https://product-listing-backend-s5l6.onrender
     password: formData.password
 });
 
-console.log(response.data);
+// console.log(response.data);
 
 if(response.status === 201){
     setIsLoading(false);
@@ -77,7 +77,7 @@ if(error.response){
 }else{
     setErrorMessage("Network error");
 }
-console.log(err);
+// console.log(err);
 }
 };
 
