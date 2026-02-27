@@ -14,7 +14,7 @@ const SignUpPage = () => {
 const navigate = useNavigate();
 
 const [isOpen, setIsOpen] = useState(false)
-const [error, setError] = useState(true);
+const [error, setError] = useState(false);
 
 const [formData, setFormData] = useState({
 
@@ -44,6 +44,7 @@ setIsOpen(!isOpen);
 
 const handleSubmit = async (e) => {
 e.preventDefault();
+
 if(!formData.email || !formData.fullName || !formData.password){
     setError(true);
     return;
@@ -62,9 +63,9 @@ if(response.status === 201){
     setIsLoading(false);
     navigate('/home');
 }
-}catch(error){
+}catch(err){
 setIsLoading(false)
-setErrorMessage(true);
+// setErrorMessage(true);
 if(error.response){
     if(error.response.status === 400){
     setErrorMessage("All feilds are required");
@@ -76,7 +77,7 @@ if(error.response){
 }else{
     setErrorMessage("Network error");
 }
-console.log(error);
+console.log(err);
 }
 };
 

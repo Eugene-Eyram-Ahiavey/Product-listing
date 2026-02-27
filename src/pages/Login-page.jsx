@@ -154,10 +154,9 @@ console.log(err);
                         error && <p className='text-red-600 text-center mt-2'>All fields are required</p> 
 
                         }
+                        
                         {
-
                         errorMessage && <p className='text-red-600 text-center mt-2'>{errorMessage}</p> 
-
                         }
 
 
