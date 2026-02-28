@@ -48,6 +48,7 @@ return;
 }
 try{
 setIsLoading(true);
+console.log(formData);
 
 const response = await axios.post("https://product-listing-backend-s5l6.onrender.com/login", {
     email: formData.email, 
@@ -64,10 +65,10 @@ if(response.status === 200){
 }catch(err){
 setIsLoading(false);
 
-if(error.response){
-    if(error.response.status === 400){
+if(err.response){
+    if(err.response.status === 400){
         setErrorMessage("Email and password are required");
-    }else if(error.response.status === 401){
+    }else if(err.response.status === 401){
         setErrorMessage("Invalid email or password");
     }else{
         setErrorMessage("Something went wrong");
@@ -76,7 +77,7 @@ if(error.response){
     setErrorMessage("Network error");
 }
 
-// console.log(err);
+console.log(err);
 }
 
 }
