@@ -66,10 +66,10 @@ if(response.status === 201){
 }catch(err){
 setIsLoading(false)
 // setErrorMessage(true);
-if(error.response){
-    if(error.response.status === 400){
-    setErrorMessage("All feilds are required");
-    }else if(error.response.status === 409){
+if(err.response){
+    if(err.response.status === 400){
+    setErrorMessage("All fields are required");
+    }else if(err.response.status === 409){
         setErrorMessage("Email already exists");
     }else{
         setErrorMessage("Something went wrong")
