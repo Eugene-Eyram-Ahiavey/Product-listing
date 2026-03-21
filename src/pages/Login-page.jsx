@@ -48,7 +48,7 @@ return;
 }
 try{
 setIsLoading(true);
-console.log(formData);
+// console.log(formData);
 
 const response = await axios.post("https://product-listing-backend-s5l6.onrender.com/login", {
     email: formData.email, 

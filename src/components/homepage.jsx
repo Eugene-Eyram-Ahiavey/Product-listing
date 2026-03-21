@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 // import axios from 'axios';
 import products from '../data/data.json'
 // import Modal from './Modal.jsx';
+import { useNavigate } from 'react-router-dom';
 import Cart from './Cart.jsx';
 import cartImage from '../utils/images/icon-add-to-cart.svg';
 import decrementImage from '../utils/images/icon-decrement-quantity.svg';
@@ -17,6 +18,7 @@ function HomePage(){
 const [cart, setCart] = useState(JSON.parse(localStorage.getItem('cart-items')) || []);
 const [isOpen, setIsOpen] = useState(false);
 
+const navigate = useNavigate();
 
 useEffect(()=> {
 localStorage.setItem('cart-items', JSON.stringify(cart));
@@ -102,9 +104,23 @@ return prevCart;
 })
 }
 
+const logout = () => {
+navigate("/login");
+}
+
     return (      
         <div className='min-h-screen'>
-         <h1 className='text-2xl font-sans font-bold text-newrose-900 ml-20 mt-5'>Desserts</h1>
+        <div className='flex justify-between items-center'>
+         <h1 className='text-2xl font-sans font-bold text-newrose-900 ml-12 mt-5'>Desserts</h1>
+            <div className='mt-5 mr-7 border-4 border-orange-600 p-2 cursor-pointer'>
+            <h1 className='text-xl font-bold cursor-pointer'
+            onClick={logout}
+            >
+            
+              LOGOUT
+              </h1>
+            </div>
+         </div>
         <div className='flex flex-col w-[90%] m-auto mt-5 lg:flex-row gap-5 pb-10'>
            
             <div className='basis-9/12 grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3' >
